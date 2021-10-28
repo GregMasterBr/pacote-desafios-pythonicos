@@ -6,7 +6,8 @@ por um espaço '<a> <b>', além disso, troque os 2 primeiros caracteres
 das duas strings.
 
 Exemplo:
-    'mix', 'pod' -> 'pox mid'
+    'mix', 'pod' ->
+    'pox',  'mid'
     'dog, 'dinner' -> 'dig donner'
 
 Assuma que a e b tem tamanho 2 ou maior.
@@ -14,8 +15,8 @@ Assuma que a e b tem tamanho 2 ou maior.
 
 def mix_up(a, b):
     # +++ SUA SOLUÇÃO +++
-    return
-
+    if len(a) and len(b) > 2:
+        return  (f'{a.replace(a[:2],b[:2],2)} {b.replace(b[:2], a[:2], 2)}')
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
 
