@@ -11,8 +11,32 @@ Retorne o resultado da string.
 """
 
 def verbing(s):
+    excecao=['visit',]
     # +++ SUA SOLUÇÃO +++
-    return
+    form_verbing = ''
+    if len(s)>2:
+        if 'ing' in s:
+            form_verbing = s + 'ly'
+        else:
+            if s[-1]=='e':
+                if s[-2] not in 'aeou':
+                    form_verbing=s.replace(s[-1],'ing')
+
+                if ('i' in s[-2]):
+                    form_verbing = s.replace(s[-2]+s[-1], 'y')+'ing'
+                else:
+                    form_verbing = s.replace(s[-1],'ing')
+            elif (s[-3] not in 'aeiou' and s[-2] in 'aeiou' and  s[-1] not in 'aeiou'): #CVC
+                if s in excecao:
+                    form_verbing = s + 'ing'
+                else:
+                    form_verbing = s+s[-1]+'ing'
+            else:
+                form_verbing = s+'ing'
+    else:
+        form_verbing=s
+
+    return form_verbing
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
@@ -39,3 +63,10 @@ if __name__ == '__main__':
     test(verbing, 'hail', 'hailing')
     test(verbing, 'swiming', 'swimingly')
     test(verbing, 'do', 'do')
+    test(verbing, 'make', 'making')
+    test(verbing, 'run', 'running')
+    test(verbing, 'visit', 'visiting') #excessão -> a última silaba não é tônica
+    test(verbing, 'die', 'dying')
+    test(verbing, 'lie', 'lying')
+
+
