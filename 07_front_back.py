@@ -12,7 +12,32 @@ a-frente + b-frente + a-trás + b-trás
 """
 def front_back(a, b):
     # +++ SUA SOLUÇÃO +++
-    return
+    tamanho_a = len(a)
+    tamanho_b = len(b)
+
+    eh_par_a = (True if tamanho_a % 2 == 0 else False)
+    eh_par_b = (True if tamanho_b % 2 == 0 else False)
+
+    if eh_par_a:
+        metade = int(tamanho_a/2)
+        primeira_metade_a = a[:metade]
+        segunda_metade_a  = a[metade:tamanho_a+1]
+    else:
+        metade = int(tamanho_a / 2)
+        primeira_metade_a = a[:metade+1]
+        segunda_metade_a  = a[metade+1:tamanho_a + 1]
+
+    if eh_par_b:
+        metade = int(tamanho_b/2)
+        primeira_metade_b = b[:metade]
+        segunda_metade_b  = b[metade:tamanho_b+1]
+    else:
+        metade = int(tamanho_b / 2)
+        primeira_metade_b = b[:metade+1]
+        segunda_metade_b  = b[metade+1:tamanho_b + 1]
+
+
+    return primeira_metade_a+ primeira_metade_b+segunda_metade_a+segunda_metade_b
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---

@@ -11,7 +11,16 @@ Exemplo: 'The dinner is not that bad!' retorna 'The dinner is good!'
 
 def not_bad(s):
     # +++ SUA SOLUÇÃO +++
-    return
+    be_to_positive =''
+    if 'not' in s:
+        index_first_not = s.index('not')
+        if 'bad' in s:
+            index_first_bad = s.index('bad')
+            if index_first_bad > index_first_not: #bad aparece depois de not
+                #print(index_first_not,index_first_bad,split_word_bad[index_first_not:index_first_bad])
+                be_to_positive = s.replace(s[index_first_not:index_first_bad+3],'good')
+
+    return (be_to_positive if be_to_positive!='' else s)
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
