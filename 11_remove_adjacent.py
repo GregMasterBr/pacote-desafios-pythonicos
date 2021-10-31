@@ -10,7 +10,17 @@ Irá retornar: [1, 2, 3]
 
 def remove_adjacent(nums):
     # +++ SUA SOLUÇÃO +++
-    return
+    lista_nums = []
+    tam = len(nums)
+    if tam > 0:
+        for i, num in enumerate(nums):
+            if i==0:
+                lista_nums.append(num)
+            else:
+                ant = nums[i-1]
+                if ant !=num:
+                    lista_nums.append(num)
+    return lista_nums
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
