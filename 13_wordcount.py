@@ -59,7 +59,7 @@ import sys
 
 
 # A função abaixo chama print_words() ou print_top() de acordo com os
-# parêtros do programa.
+# parâmetros do programa.
 def main():
     if len(sys.argv) != 3:
         print('Utilização: ./13_wordcount.py {--count | --topcount} file')
@@ -67,14 +67,58 @@ def main():
 
     option = sys.argv[1]
     filename = sys.argv[2]
+
     if option == '--count':
         print_words(filename)
+
     elif option == '--topcount':
         print_top(filename)
     else:
         print('unknown option: ' + option)
         sys.exit(1)
 
+def print_words(filename='letras.txt'):
+    abcdario =['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+    arquivo = open(filename)
+    arquivo_str = arquivo.read().lower()
+    texto_separando_caracteres = list(arquivo_str)
+    lista_ocorrência_letras = []
+    dicionario_ocorrência_letras = {}
+
+    for letra in abcdario:
+        quantidade = texto_separando_caracteres.count(letra)
+        if quantidade >0:
+            lista_ocorrência_letras.append((letra,quantidade))
+            dicionario_ocorrência_letras[letra]= quantidade
+            print(letra,quantidade)
+
+    return
+
+def print_top(filename='letras.txt'):
+    abcdario = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
+                'v', 'w', 'x', 'y', 'z']
+    arquivo = open(filename)
+    arquivo_str = arquivo.read().lower()
+    texto_separando_caracteres = list(arquivo_str)
+    lista_ocorrência_letras = []
+    dicionario_ocorrência_letras = {}
+
+    for letra in abcdario:
+        quantidade = texto_separando_caracteres.count(letra)
+        if quantidade > 0:
+            lista_ocorrência_letras.append((letra, quantidade))
+            dicionario_ocorrência_letras[letra] = quantidade
+
+    for x,i in enumerate(sorted(dicionario_ocorrência_letras, key=dicionario_ocorrência_letras.get, reverse=True)):
+        if x<20:
+            print(i, dicionario_ocorrência_letras[i])
+    return
 
 if __name__ == '__main__':
     main()
+    #print_words('alice.txt')
+    #print_top('alice.txt')
+
+    #13_wordcount.py --count nome_do_arquivo
+    #13_wordcount.py --topcount nome_do_arquivo
+
